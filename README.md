@@ -81,10 +81,6 @@ MONGO_URI=your_mongodb_connection_string
 PORT=5001
 ```
 
-**Example MongoDB connection strings:**
-- Local: `mongodb://localhost:27017/aroma-luxe`
-- MongoDB Atlas: `mongodb+srv://username:password@cluster.mongodb.net/aroma-luxe?retryWrites=true&w=majority`
-
 ## 🚀 Running the Application
 
 ### 1. Start MongoDB
