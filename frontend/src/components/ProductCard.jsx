@@ -1,35 +1,34 @@
 import { useNavigate } from "react-router-dom";
+import "./ProductCard.css";
 
 export default function ProductCard({ product }) {
   const navigate = useNavigate();
 
   return (
     <div
+      className="product-card"
       onClick={() => navigate(`/product/${product._id}`)}
-      style={styles.card}
     >
-      <img src={product.images[0]} style={styles.img} />
-      <h3>{product.name}</h3>
-      <p>{product.description.substring(0, 40)}...</p>
-      <strong>₹{product.price}</strong>
+      <div className="product-card-image-container">
+        <img 
+          src={product.images?.[0] || "https://picsum.photos/300/300"} 
+          alt={product.name}
+          className="product-card-image"
+          onError={(e) => {
+            e.target.src = "https://via.placeholder.com/300x300?text=Perfume";
+          }}
+        />
+        <div className="product-card-overlay">
+          <span className="product-card-view">View Details</span>
+        </div>
+      </div>
+      <div className="product-card-content">
+        <h3 className="product-card-name">{product.name}</h3>
+        <p className="product-card-description">
+          {product.description?.substring(0, 60)}...
+        </p>
+        <div className="product-card-price">₹{product.price?.toLocaleString()}</div>
+      </div>
     </div>
   );
 }
-
-const styles = {
-  card: {
-    width: "220px",
-    padding: "15px",
-    background: "#fff",
-    borderRadius: "10px",
-    boxShadow: "0 0 10px rgba(0,0,0,0.2)",
-    cursor: "pointer",
-    transition: "0.3s",
-  },
-  img: {
-    width: "100%",
-    height: "200px",
-    borderRadius: "10px",
-    objectFit: "cover"
-  }
-};

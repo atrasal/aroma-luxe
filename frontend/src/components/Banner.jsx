@@ -1,28 +1,23 @@
+import { useNavigate } from "react-router-dom";
+import "./Banner.css";
+
 export default function Banner() {
+  const navigate = useNavigate();
+
+  const handleExplore = () => {
+    window.scrollTo({ top: window.innerHeight - 80, behavior: "smooth" });
+  };
+
   return (
-    <div style={styles.banner}>
-      <h1>Discover Luxury Fragrances</h1>
-      <button style={styles.btn}>Explore Collection</button>
+    <div className="banner">
+      <div className="banner-overlay"></div>
+      <div className="banner-content">
+        <h1 className="banner-title">Discover Luxury Fragrances</h1>
+        <p className="banner-subtitle">Indulge in the finest scents crafted for the extraordinary</p>
+        <button className="banner-btn" onClick={handleExplore}>
+          Explore Collection
+        </button>
+      </div>
     </div>
   );
 }
-
-const styles = {
-  banner: {
-    height: "300px",
-    background: "url(https://i.imgur.com/s6yE6Kt.jpeg) center/cover",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    paddingLeft: "40px",
-    color: "white"
-  },
-  btn: {
-    marginTop: "10px",
-    padding: "10px 20px",
-    fontSize: "16px",
-    border: "none",
-    background: "#fff",
-    cursor: "pointer",
-  }
-};
